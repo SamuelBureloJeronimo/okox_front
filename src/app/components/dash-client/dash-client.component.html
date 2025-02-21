@@ -1,0 +1,45 @@
+<div *ngIf="loading" class="container text-center">
+  <div class="spinner-border text-primary" role="status">
+    <span class="visually-hidden">Cargando...</span>
+  </div>
+  <p>Cargando datos, por favor espera...</p>
+</div>
+
+<input #fileInput type="file" (change)="onFileSelected($event)" accept="image/*" hidden>
+
+<mat-drawer-container *ngIf="!loading"  class="example-container" [hasBackdrop]="this.hasBack">
+  <mat-drawer opened [mode]="this.modeSideBar" style="background-color: #e29e00; width: 280px; border-radius: 0px 0px 0px 0px;">
+    <mat-nav-list>
+      <div class="logo_nav">
+        <div id="foto-logo">
+          <img [src]="this.logo" alt="mi-foto">
+        </div>
+      </div>
+
+      <a [id]="'id_sb_'+nav.route" class="side_output" mat-list-item (click)="this.changeView(nav.route)" *ngFor="let nav of fillerNav">
+        <div class="listSideLeft" id="listID"><mat-icon [id]="'side_tp_'+nav.route">{{nav.icon}}</mat-icon><label [id]="'lb_sv_'+nav.route">{{nav.name}}</label></div>
+      </a>
+
+      <div class="salir" style="overflow: hidden;">
+        <div id="divSalir">
+          <a mat-list-item style="border-radius: 10px 10px 10px 10px;" (click)="this.changeView('salir')">
+            <div class="listSideLeft"><mat-icon>output</mat-icon> <label>Cerrar sesión</label></div>
+          </a>
+        </div>
+      </div>
+
+      <div class="mis-datos">
+        <div id="foto" (click)="fileInput.click()">
+          <img [src]="this.img_user" alt="mi-foto">
+        </div>
+        <label for="nombre" style="margin-top: 12px;">{{this.username}}</label>
+        <label for="nombre" style="font-size: 12px; font-family: Thin;">{{this.correo}}</label>
+        <button class="btn btn-primary btn-datos" (click)="this.changeView('my-perfil')"><mat-icon>person</mat-icon><label for="mis">Mi perfil</label></button>
+      </div>
+    </mat-nav-list>
+  </mat-drawer>
+  <mat-drawer-content class="contenedor-router">
+    <router-outlet></router-outlet>
+  </mat-drawer-content>
+</mat-drawer-container>
+

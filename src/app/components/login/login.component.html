@@ -1,0 +1,16 @@
+<div class="login">
+  <div class="login__container">
+    <div class="login__info">
+      <h1 class="login__title">Inicio de sesión</h1>
+      <form (ngSubmit)="onSubmit()" class="login__imputs">
+        <input class="login__input" type="text" name="email" [(ngModel)]="email" placeholder="Correo electronico">
+        <input class="login__input" type="password" name="password" [(ngModel)]="this.password" placeholder="Contraseña">
+        <p>¿Olvidaste tu contraseña?<span class="login__span"> Recuperar</span></p>
+        <button class="login__btn">Acceder</button>
+        <p>¿No tienes una cuenta?<span class="login__span" [routerLink]="['/contactanos']"> Conactanos</span></p>
+      </form>
+    </div>
+    <div class="login__img"></div>
+  </div>
+</div>
+

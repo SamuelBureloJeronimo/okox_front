@@ -1,1 +1,30 @@
-/* You can add global styles to this file, and also import other style files */
+/* Estilos de letras de Google Fonts */
+.itim-regular {
+  font-family: "Itim", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+.atkinson-hyperlegible-mono {
+  font-family: "Atkinson Hyperlegible Mono", serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}
+.poppins-light {
+  font-family: "Poppins", serif;
+}
+
+:root {
+  --B: #FFFFFF;
+  --N: #000000;
+  --A1: #00225A;
+  --A2: #6188B9;
+  --A3: #B9D1EB;
+  --AM1: #E8AB1E;
+  --G1: #242424;
+  --G2: #eadbff;
+  --G3: #f8f3ff;
+}
+a {
+  text-decoration: none;
+}

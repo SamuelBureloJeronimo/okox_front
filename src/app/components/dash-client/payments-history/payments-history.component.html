@@ -1,0 +1,114 @@
+<mat-card-content style="background-color: white; border-radius: 10px; box-shadow: 10px 10px 10px 0px rgb(107, 107, 107);">
+
+  <div style="display: flex;">
+    <div style="width: 50%;">
+      <mat-form-field>
+        <mat-label><mat-icon>article</mat-icon> No. de contrato</mat-label>
+        <mat-select>
+          <mat-option value="one">321212</mat-option>
+          <mat-option value="two">434343</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div style="width: 50%; display: flex; justify-content: end;">
+      <mat-card appearance="outlined" style="width: fit-content; height: fit-content;">
+        <mat-card-content style="display: flex;"><mat-icon>pin_drop</mat-icon>Macuspana, Tabasco.</mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+  <table mat-table [dataSource]="(dataSource | slice: lowValue : highValue)" class="mat-elevation-z8">
+
+    <!--- Note that these columns can be defined in any order.
+          The actual rendered columns are set as a property on the row definition" -->
+
+    <!-- Mes Column -->
+    <ng-container matColumnDef="mes">
+      <th mat-header-cell *matHeaderCellDef> Mes </th>
+      <td mat-cell *matCellDef="let element"> {{element.mes}} </td>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="estado">
+      <th mat-header-cell *matHeaderCellDef> Estatus </th>
+      <td mat-cell *matCellDef="let element">
+        <label class="valid_cell" *ngIf="element.estado == 'Validado'">{{element.estado}}</label>
+        <label class="pendient_cell" *ngIf="element.estado == 'Pendiente'">{{element.estado}}</label>
+      </td>
+    </ng-container>
+
+    <!-- Weight Column -->
+    <ng-container matColumnDef="monto">
+      <th mat-header-cell *matHeaderCellDef> Monto </th>
+      <td mat-cell *matCellDef="let element"> {{element.monto | currency}} </td>
+    </ng-container>
+
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="recibo_agua">
+      <th mat-header-cell *matHeaderCellDef> Recibo de agua </th>
+      <td mat-cell *matCellDef="let element">
+        <button *ngIf="element.estado == 'Validado'" class="btn btn-info" (click)="dwn_rec_pago(element.mes)">Descargar</button>
+        <button *ngIf="element.estado == 'Pendiente'" class="btn btn-secundary" (click)="dwn_rec_pago(element.mes)" disabled>Descargar</button>
+      </td>
+    </ng-container>
+
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="recibo_pago">
+      <th mat-header-cell *matHeaderCellDef> Recibo de pago </th>
+      <td mat-cell *matCellDef="let element">
+        <button class="btn btn-danger" (click)="dwn_rec_pago(element.mes)">Descargar</button>
+      </td>
+    </ng-container>
+
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="fech_upload">
+      <th mat-header-cell *matHeaderCellDef> Fecha de subida </th>
+      <td mat-cell *matCellDef="let element"> {{element.fech_upload | date:"yyyy-MM-dd HH:mm:ss"}} </td>
+    </ng-container>
+
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="fech_confirm">
+      <th mat-header-cell *matHeaderCellDef> Fecha de confirmación </th>
+      <td mat-cell *matCellDef="let element"> {{element.fech_confirm}} </td>
+    </ng-container>
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+  <mat-paginator [length]="dataSource.length"
+    [pageSize]="this.pageOptions[0]"
+    [pageSizeOptions]="this.pageOptions"
+    (page)="getPaginatorData($event)">
+  </mat-paginator>
+  <hr/>
+  <label for="">asas</label>
+  <hr/>
+  <label for="">asas</label>
+  <hr/>
+  <label for="">asas</label>
+  <hr/>
+  <label for="">asas</label>
+  <hr/>
+  <label for="">asas</label>
+  <hr/>
+  <label for="">asas</label>
+  <hr/>
+  <label for="">asas</label>
+  <hr/>
+  <label for="">asas</label>
+  <hr/>
+  <label for="">asas</label>
+  <hr/>
+  <label for="">asas</label>
+  <hr/>
+  <label for="">asas</label>
+  <hr/>
+  <label for="">asas</label>
+  <hr/>
+  <label for="">asas</label>
+  <hr/>
+  <label for="">asas</label>
+  <hr/>
+  <label for="">asas</label>
+  <hr/>
+  <label for="">asas</label>
+</mat-card-content>
+
