@@ -1,1 +1,105 @@
-<p>register-user works!</p>
+<mat-card appearance="outlined">
+  <mat-card-content style="background-color: white; border-radius: 10px; box-shadow: 10px 10px 10px 0px rgb(107, 107, 107);">
+
+    <div class="row">
+      <div class="col text-center">
+        <h3 class="itim-regular">Nuevo empleado</h3>
+      </div>
+    </div>
+
+    <form [formGroup]="empleadoForm" (ngSubmit)="onSubmit()" class="usuario-form">
+
+      <mat-form-field class="full-width">
+        <mat-label>RFC</mat-label>
+        <input matInput formControlName="rfc" required>
+        <mat-error *ngIf="empleadoForm.get('rfc')?.invalid">El RFC es requerido y debe tener 13 caracteres</mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="full-width">
+        <mat-label>Nombre</mat-label>
+        <input matInput formControlName="nombre" required>
+        <mat-error *ngIf="empleadoForm.get('nombre')?.invalid">El nombre es requerido</mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="full-width">
+        <mat-label>Apellido Paterno</mat-label>
+        <input matInput formControlName="app" required>
+        <mat-error *ngIf="empleadoForm.get('app')?.invalid">El apellido paterno es requerido</mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="full-width">
+        <mat-label>Apellido Materno</mat-label>
+        <input matInput formControlName="apm" required>
+        <mat-error *ngIf="empleadoForm.get('apm')?.invalid">El apellido materno es requerido</mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="full-width">
+        <mat-label>Fecha de Nacimiento</mat-label>
+        <input matInput type="date" formControlName="fech_nac" required>
+        <mat-error *ngIf="empleadoForm.get('fech_nac')?.invalid">La fecha de nacimiento es requerida</mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="full-width">
+        <mat-label>Sexo</mat-label>
+        <mat-select formControlName="sexo" required>
+          <mat-option value="M">Masculino</mat-option>
+          <mat-option value="F">Femenino</mat-option>
+        </mat-select>
+        <mat-error *ngIf="empleadoForm.get('sexo')?.invalid">Seleccione un sexo</mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="full-width">
+        <mat-label>Teléfono</mat-label>
+        <input matInput type="number" formControlName="telefono" required>
+        <mat-error *ngIf="empleadoForm.get('telefono')?.invalid">Ingrese un teléfono válido</mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="full-width">
+        <mat-label>Correo</mat-label>
+        <input matInput type="email" formControlName="correo" required>
+        <mat-error *ngIf="empleadoForm.get('correo')?.invalid">Ingrese un correo válido</mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="full-width">
+        <mat-label>Rol</mat-label>
+        <mat-select formControlName="rol" required>
+          <mat-option *ngFor="let rol of roles" [value]="rol.value">{{ rol.name }}</mat-option>
+        </mat-select>
+        <mat-error *ngIf="empleadoForm.get('rol')?.invalid">Seleccione un rol</mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Pais</mat-label>
+        <mat-select formControlName="pais" required>
+          <mat-option *ngFor="let pais of this.paises" [value]="[pais.id]" (onSelectionChange)="selectPais(pais.id)">{{pais.nombre}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" [hidden]="this.hEstado">
+        <mat-label>Estado</mat-label>
+        <mat-select formControlName="estado" required>
+          <mat-option *ngFor="let estado of this.estados" [value]="[estado.id]" (onSelectionChange)="changeEstado(estado.id)">{{estado.nombre}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" [hidden]="this.hMunicipios">
+        <mat-label>Municipio</mat-label>
+        <mat-select formControlName="municipio" required>
+          <mat-option *ngFor="let municipio of this.municipios" [value]="[municipio.id]" (onSelectionChange)="changeMunicipio(municipio.id)">{{municipio.nombre}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" [hidden]="this.hColonia">
+        <mat-label>Colonia</mat-label>
+        <mat-select formControlName="colonia" required>
+          <mat-option *ngFor="let colonias of this.colonias" [value]="[colonias.id]" (onSelectionChange)="changeColonia(colonias.id)">{{colonias.nombre}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <button mat-raised-button color="primary" type="submit" [disabled]="empleadoForm.invalid">Registrar</button>
+    </form>
+
+  </mat-card-content>
+
+  </mat-card>
+

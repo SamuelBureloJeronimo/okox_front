@@ -1,9 +1,18 @@
 import { Injectable } from '@angular/core';
+import { GeneralService } from './general.service';
+import { Observable } from 'rxjs';
+import { HttpHeaders } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
-export class AdminService {
+export class AdminService extends GeneralService{
 
-  constructor() { }
+  public create_user(form:any):Observable<any> {
+    let token = localStorage.getItem('token');
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${token}`
+    });
+    return this._http.post(this.url_server+"/admin/create-user", form, { headers });
+  }
 }
