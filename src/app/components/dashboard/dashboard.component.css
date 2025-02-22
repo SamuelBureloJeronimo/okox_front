@@ -1,95 +1,23 @@
-:host {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-}
-
-.demo-section+.demo-section {
-  margin-top: 16px;
-}
-
-.example-container {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-}
-
-.menuIcon {
-  color: white;
-}
-
-.example-is-mobile .example-toolbar {
-  position: fixed;
-  /* Make sure the toolbar will stay on top of the content as it scrolls past. */
-  z-index: 2;
-}
-
-h1.example-app-name {
-  margin-left: 8px;
-}
-
-.example-sidenav-container {
-  /* When the sidenav is not fixed, stretch the sidenav container to fill the available space. This
-     causes `<mat-sidenav-content>` to act as our scrolling element for desktop layouts. */
-  flex: 1;
-}
-
-.example-is-mobile .example-sidenav-container {
-  /* When the sidenav is fixed, don't constrain the height of the sidenav container. This allows the
-     `<body>` to be our scrolling element for mobile layouts. */
-  flex: 1 0 auto;
-}
-
-.mat-toolbar {
-  background-color: var(--A1);
-  color: white;
-}
-
-.container {
-  max-width: 800px;
-}
-
-h3 {
-  color: #343a40;
-}
 
 button {
   margin: 10px;
 }
-
-mat-card-content {
-  padding: 5%;
+mat-nav-list {
+  width: 100%;
 }
-
-mat-sidenav {
-  width: 20%;
+mat-drawer {
+  background-color: #e29e00;
+  width: 34vh;
+  border-radius: 0px 0px 0px 0px;
 }
-.loading-container {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background: rgba(255, 255, 255, 0.8);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  z-index: 1000;
-}
-
 mat-nav-list {
   .logo_nav {
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    height: 130px;
-    margin:25%;
+    height: 110px;
+    margin:26%;
     margin-top: 5%;
     margin-bottom: 5%;
     border-radius: 15px;
@@ -117,16 +45,11 @@ mat-nav-list {
 
   a {
     display: flex;
-    justify-content: center;
-    align-items: center;
     border-radius: 10px 0px 0px 10px;
     #listID {
       margin-left: 20%;
-      font-size: 16px;
+      font-size: 14px;
     }
-  }
-  #drawer {
-    margin-left: 10px;
   }
   a:hover {
     label, mat-icon {
@@ -175,8 +98,8 @@ mat-nav-list {
       display: flex;
       justify-content: center;
       align-items: center;
-      width: 90px;
-      height: 90px;
+      width: 80px;
+      height: 80px;
       box-shadow: 2px 4px 4px 4px rgba(64, 60, 60, 0.231);
       border-radius: 50%;
       overflow: hidden;

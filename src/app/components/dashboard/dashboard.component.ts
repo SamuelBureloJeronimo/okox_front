@@ -19,7 +19,6 @@ import { ClienteService } from '../../services/cliente.service';
 import { CookieService } from 'ngx-cookie-service';
 import { JwtPayloadUser } from '../../services/general.service';
 import { UsuarioModel } from '../../models/Usuario';
-import { AdminService } from '../../services/admin.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -75,13 +74,13 @@ export class DashboardComponent implements OnInit {
       ];
     } else if (this.user.rol == 1){
       this.fillerNav = [
-        { name: 'Registrar cliente', route: 'dashboard/capturist/register-client', icon: 'water_drop' },
-        { name: 'Ver clientes', route: 'dashboard/capturist/clients', icon: 'person' }
+        { name: 'Registrar cliente', route: 'dashboard/capturist/register-client', icon: 'person_add' },
+        { name: 'Ver clientes', route: 'dashboard/capturist/clients', icon: 'group' }
       ];
     } else if (this.user.rol == 4){
       this.fillerNav = [
-        { name: 'Registrar usuario', route: 'dashboard/admin/register-user', icon: 'water_drop' },
-        { name: 'Compañia', route: 'dashboard/admin/company', icon: 'water_drop' }
+        { name: 'Registrar usuario', route: 'dashboard/admin/register-user', icon: 'person_add' },
+        { name: 'Compañia', route: 'dashboard/admin/company', icon: 'store' }
       ];
     }
 

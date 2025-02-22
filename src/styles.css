@@ -28,3 +28,13 @@
 a {
   text-decoration: none;
 }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  font-size: 14px; /* Ajusta según tu preferencia */
+}
+
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

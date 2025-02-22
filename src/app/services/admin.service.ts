@@ -9,10 +9,6 @@ import { HttpHeaders } from '@angular/common/http';
 export class AdminService extends GeneralService{
 
   public create_user(form:any):Observable<any> {
-    let token = localStorage.getItem('token');
-    const headers = new HttpHeaders({
-      'Authorization': `Bearer ${token}`
-    });
-    return this._http.post(this.url_server+"/admin/create-user", form, { headers });
+    return this._http.post(this.url_server+"/admin/create-user", form, { headers: this.headerToken() });
   }
 }

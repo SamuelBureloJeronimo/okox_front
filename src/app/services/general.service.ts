@@ -34,7 +34,7 @@ export class GeneralService {
     return this._http.post(this.url_server+'/login', fomData);
   }
   public sendEmail(mail: string, form: any):Observable<any>{
-    return this._http.post(this.url_server+'/enviar_usuario/'+mail, form);
+    return this._http.post(this.url_server+'/enviar_usuario/'+mail, form, { headers: this.headerToken() });
   }
   public get_paises():Observable<any>{
     return this._http.get(this.url_server+'/get-paises');
