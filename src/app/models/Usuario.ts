@@ -6,6 +6,6 @@ export class UsuarioModel {
   rol: number = -1;
   last_session: string = '';
   fech_created: string = '';
-  imagen: string = '';
+  imagen: any = '';
   id_company: string = '';
 }

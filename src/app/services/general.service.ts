@@ -3,6 +3,12 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import {CookieService} from 'ngx-cookie-service';
 
+export interface JwtPayloadUser {
+  email: string;
+  id_company: string;
+  sub: string;
+}
+
 @Injectable({
   providedIn: 'root'
 })
@@ -18,12 +24,11 @@ export class GeneralService {
   constructor(public _http:HttpClient, private cookieService: CookieService) {
     this.url_server = "http://localhost:5000";
   }
+  public init_dashboard():Observable<any> {
+    return this._http.get(this.url_server+"/init-dashboard", { headers: this.headerToken() });
+  }
   public isAuth():Observable<any> {
     return this._http.get(this.url_server+"/auth-token", { headers: this.headerToken() });
-  }
-
-  public changeImage(data:any): Observable<any> {
-    return this._http.post(this.url_server+"/change-image", data);
   }
   public login(fomData: any):Observable<any>{
     return this._http.post(this.url_server+'/login', fomData);

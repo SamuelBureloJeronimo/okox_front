@@ -13,9 +13,6 @@ import { CookieService } from 'ngx-cookie-service';
 @Component({
   selector: 'app-home',
   imports: [MatIconModule, RouterModule, CommonModule],
-  providers: [
-    CookieService, ClienteService
-  ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })

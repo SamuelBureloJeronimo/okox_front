@@ -6,20 +6,17 @@ import Swal from 'sweetalert2'
 import { Router, RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { MatIconModule } from '@angular/material/icon';
-import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
 // IMPORTACIÓN DE SERVICIOS
 import { CookieService } from 'ngx-cookie-service';
-import { GeneralService } from '../../services/general.service';
+import { GeneralService, JwtPayloadUser } from '../../services/general.service';
+import { jwtDecode } from 'jwt-decode';
 
 
 @Component({
   selector: 'app-login',
     imports: [MatIconModule, RouterModule, CommonModule, FormsModule],
-    providers: [
-      CookieService, NgModule, FormsModule, GeneralService
-    ],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css'
 })
@@ -36,10 +33,9 @@ export class LoginComponent {
    * @param _router -> Instancia del servicio de enrutamiento Angular para redirigir al usuario después del inicio de sesión exitoso.
    */
   constructor(private genServ: GeneralService, private _router: Router, private cookieServ: CookieService) {
-    this.email = "cliente@gmail.com";
+    this.email = "samuelbj@gmail.com";
     this.password = "1415";
   }
-
 
   //Maneja la lógica cuando el usuario envía el formulario de inicio de sesión.
   async onSubmit() {
@@ -53,28 +49,32 @@ export class LoginComponent {
       try {
         //Realiza una solicitud de inicio de sesión a través del método login del servicio ClienteService.
         let res = await lastValueFrom(this.genServ.login(form));
-        console.log(res);
 
-        //Almacena el token de acceso, el ID del cliente y el rol del usuario en localStorage.
-        this.cookieServ.set("token", res.token);
-        this.cookieServ.set("email", res.email);
-        this.cookieServ.set("rol", res.rol);
+        // Decodificar el token
+        let tkn = jwtDecode<JwtPayloadUser>(res);
 
-        //Redirige al usuario a la ruta /my-perfil/mis-datos.
-        if(res.rol == 0){
-          this._router.navigate(['/dash-client/my-consume']).then(() => {
-            window.location.reload();
-          });
-        } else if (res.rol == 1){
-          this._router.navigate(['/capturista/registrar-cliente']).then(() => {
-            window.location.reload();
-          });
-        } else if (res.rol == 4){
-          this._router.navigate(['/administracion/registrar-usuario']).then(() => {
-            window.location.reload();
-          });
+        //Almacena el token de acceso
+        this.cookieServ.set("token", res);
+
+        let nextRoute = "/dashboard";
+
+        switch(tkn.sub) {
+          case "0":
+            nextRoute += "/client/my-consume";
+            break;
+          case "1":
+            nextRoute += "/capturist/register-client";
+            break;
+          case "4":
+            nextRoute += "/admin/register-user";
+            break;
+          default:
+            Swal.fire(
+              'Error...', 'El rol proporcionado no existe', 'error'
+            );
+            break;
         }
-
+        this._router.navigate([nextRoute]);
       } catch (error: any) {
         //Si ocurre un error durante la autenticación:
         console.log(error);

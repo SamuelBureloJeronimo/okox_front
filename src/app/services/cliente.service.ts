@@ -8,8 +8,8 @@ import { Observable } from 'rxjs';
 
 export class ClienteService extends GeneralService {
 
-  public init_dashboard():Observable<any> {
-    return this._http.get(this.url_server+"/clientes/init-dashboard", { headers: this.headerToken() });
+  public changeImage(data:any): Observable<any> {
+    return this._http.post(this.url_server+"/change-image-profile", data, { headers: this.headerToken() });
   }
 
   public sendReport(id_cliente:string, formData: any):Observable<any>{

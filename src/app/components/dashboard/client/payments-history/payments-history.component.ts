@@ -12,10 +12,6 @@ import { MatOption, MatSelect } from '@angular/material/select';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 
-// - PROVIDERS
-import { MatListModule } from '@angular/material/list';
-import { NgModule } from '@angular/core';
-
 export interface PeriodicElement {
   mes: string;
   estado: string;
@@ -42,9 +38,8 @@ const ELEMENT_DATA: PeriodicElement[] = [
 
 @Component({
   selector: 'app-payments-history',
-  imports: [MatIconModule, RouterModule, MatPaginatorModule, MatTableModule,
-            CommonModule, MatCardModule, MatFormField, MatLabel, MatSelect, MatOption],
-  providers: [MatListModule, NgModule],
+  imports: [MatIconModule, RouterModule, MatPaginatorModule, MatTableModule, CommonModule,
+            MatCardModule, MatFormField, MatLabel, MatSelect, MatOption],
   templateUrl: './payments-history.component.html',
   styleUrl: './payments-history.component.css'
 })

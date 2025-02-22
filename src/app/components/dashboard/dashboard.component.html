@@ -12,17 +12,23 @@
     <mat-nav-list>
       <div class="logo_nav">
         <div id="foto-logo">
-          <img [src]="this.logo" alt="mi-foto">
+          <img [src]="this.company.logo" alt="mi-foto">
         </div>
       </div>
 
-      <a [id]="'id_sb_'+nav.route" class="side_output" mat-list-item (click)="this.changeView(nav.route)" *ngFor="let nav of fillerNav">
-        <div class="listSideLeft" id="listID"><mat-icon [id]="'side_tp_'+nav.route">{{nav.icon}}</mat-icon><label [id]="'lb_sv_'+nav.route">{{nav.name}}</label></div>
-      </a>
+        <a class="side_output colorCustom" mat-list-item
+          (click)="this.selectedListLeft(nav.route)"
+          *ngFor="let nav of fillerNav" [class.active]="nav.route === selectedRoute">
+
+          <div class="listSideLeft" id="listID">
+            <mat-icon>{{nav.icon}}</mat-icon>
+            <label>{{nav.name}}</label>
+          </div>
+        </a>
 
       <div class="salir" style="overflow: hidden;">
         <div id="divSalir">
-          <a mat-list-item style="border-radius: 10px 10px 10px 10px;" (click)="this.changeView('salir')">
+          <a mat-list-item style="border-radius: 10px 10px 10px 10px;" (click)="this.closeSesion()">
             <div class="listSideLeft"><mat-icon>output</mat-icon> <label>Cerrar sesión</label></div>
           </a>
         </div>
@@ -30,11 +36,11 @@
 
       <div class="mis-datos">
         <div id="foto" (click)="fileInput.click()">
-          <img [src]="this.img_user" alt="mi-foto">
+          <img [src]="this.user.imagen" alt="mi-foto">
         </div>
-        <label for="nombre" style="margin-top: 12px;">{{this.username}}</label>
-        <label for="nombre" style="font-size: 12px; font-family: Thin;">{{this.correo}}</label>
-        <button class="btn btn-primary btn-datos" (click)="this.changeView('my-perfil')"><mat-icon>person</mat-icon><label for="mis">Mi perfil</label></button>
+        <label for="nombre" style="margin-top: 12px;">{{this.user.username}}</label>
+        <label for="nombre" style="font-size: 12px; font-family: Thin;">{{this.user.email}}</label>
+        <button class="btn-datos" (click)="this.my_perfil($event)"><mat-icon>person</mat-icon><label for="mis">Mi perfil</label></button>
       </div>
     </mat-nav-list>
   </mat-drawer>

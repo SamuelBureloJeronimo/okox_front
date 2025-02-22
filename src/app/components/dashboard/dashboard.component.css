@@ -129,7 +129,11 @@ mat-nav-list {
     margin-left: 10px;
   }
   a:hover {
-    background-color: #1e2fe848;
+    label, mat-icon {
+      cursor: pointer;
+      color: black;
+    }
+    background-color: white;
   }
 
   label {
@@ -199,10 +203,17 @@ mat-nav-list {
       justify-content: center;
       align-items: center;
       height: 50px;
-      background-color: #FFB200;
+      background-color: #ffb300;
       border-color: #343a4027;
+      border-radius: 5px;
       width: 80%;
       mat-icon { width: fit-content; }
+    }
+    .btn-datos.active {
+      background-color: white;
+      label, mat-icon {
+        color: #F59E0B;
+      }
     }
 
   }
@@ -225,7 +236,15 @@ mat-nav-list {
 
 .contenedor-router {
   height: 100vh;
-  background-color: var(--A2); /* Solo para visualización */
+  background-color: #F0F0F0; /* Solo para visualización */
   overflow: scroll;
   padding: 3%;
 }
+.colorCustom.active {
+  background-color: #F0F0F0;
+  label, mat-icon {
+    color: #F59E0B;
+  }
+}
+
+
