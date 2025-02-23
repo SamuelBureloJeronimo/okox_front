@@ -19,11 +19,12 @@
   --N: #000000;
   --A1: #00225A;
   --A2: #6188B9;
-  --A3: #B9D1EB;
+  --A3: #F2FEFE;
   --AM1: #E8AB1E;
   --G1: #242424;
   --G2: #eadbff;
   --G3: #f8f3ff;
+  --G1T: #2424241a;
 }
 a {
   text-decoration: none;
@@ -38,3 +39,29 @@ html, body {
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+
+html {
+  box-sizing: border-box;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+.sombra {
+  -webkit-box-shadow: 13px 13px 13px -8px rgba(0, 0, 0, 0.36);
+  -moz-box-shadow: 13px 13px 13px -8px rgba(0, 0, 0, 0.36);
+  box-shadow: 13px 13px 13px -8px rgba(0, 0, 0, 0.36);
+}
+
+.contenedor-in {
+  max-width: 120rem;
+  width: 95%;
+  margin: 0 auto;
+}
+
+.contenedor {
+  max-width: 120rem;
+  margin: 0 auto;
+}
+

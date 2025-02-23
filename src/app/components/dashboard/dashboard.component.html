@@ -7,7 +7,7 @@
 
 <input #fileInput type="file" (change)="onFileSelected($event)" accept="image/*" hidden>
 
-<mat-drawer-container *ngIf="!loading"  class="example-container" [hasBackdrop]="this.hasBack">
+<mat-drawer-container *ngIf="!loading"  class="example-container" [hasBackdrop]="this.hasBack" >
   <mat-drawer opened [mode]="this.modeSideBar">
     <mat-nav-list>
       <div class="logo_nav">
@@ -44,8 +44,11 @@
       </div>
     </mat-nav-list>
   </mat-drawer>
+
   <mat-drawer-content class="contenedor-router">
     <router-outlet></router-outlet>
   </mat-drawer-content>
+
 </mat-drawer-container>
+
 
