@@ -38,11 +38,11 @@ export const routes: Routes = [
       { path: 'admin',
         canActivate: [AdminGuard],
         children: [
-          { path: 'register-user', component: RegisterUserComponent },
-          { path: 'view-users', component: ViewUsersComponent },
-          { path: 'maintenances', component: MaintenanceComponent },
-          { path: 'company', component: CompanyComponent },
-          { path: 'perfil', component: PerfilComponent }
+          { path: 'register-user', component: RegisterUserComponent, canActivate: [AdminGuard] },
+          { path: 'view-users', component: ViewUsersComponent, canActivate: [AdminGuard] },
+          { path: 'maintenances', component: MaintenanceComponent, canActivate: [AdminGuard] },
+          { path: 'company', component: CompanyComponent, canActivate: [AdminGuard] },
+          { path: 'perfil', component: PerfilComponent, canActivate: [AdminGuard] }
         ]
       },
       {

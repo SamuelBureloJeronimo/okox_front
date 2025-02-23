@@ -36,6 +36,8 @@ export class RegisterUserComponent implements OnInit {
   public municipios: MunicipioModel[] = [];
   public colonias: ColoniaModel[] = [];
 
+  email: string = "";
+
   hEstado = true;
   hMunicipios = true;
   hColonia = true;
@@ -86,6 +88,17 @@ export class RegisterUserComponent implements OnInit {
       form_mail.set("username", res.user);
       form_mail.set("password", res.pass);
       Swal.fire("¡Usuario creado con éxito!", "Revisa tu correo electronico, te hemos enviado tus datos", "success");
+
+      this.email = this.empleadoForm.value.correo;
+
+      this.empleadoForm.reset();
+      this.empleadoForm.controls['sexo'].setValue("");
+      this.empleadoForm.controls['rol'].setValue("");
+      this.empleadoForm.controls['pais'].setValue("");
+      this.empleadoForm.controls['estado'].setValue("");
+      this.empleadoForm.controls['municipio'].setValue("");
+      this.empleadoForm.controls['colonia'].setValue("");
+
     } catch (error: any) {
       if (error.error.msg) {
         Swal.fire("Error", error.error.msg, "error");
@@ -100,7 +113,7 @@ export class RegisterUserComponent implements OnInit {
       console.log(error);
     }
     try {
-      await lastValueFrom(this.genServ.sendEmail(this.empleadoForm.value.correo, form_mail));
+      await lastValueFrom(this.genServ.sendEmail(this.email, form_mail));
     } catch (error: any) {
       console.log(error);
     }

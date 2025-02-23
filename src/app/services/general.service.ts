@@ -48,6 +48,9 @@ export class GeneralService {
   public get_colonias(id_colonias:number):Observable<any>{
     return this._http.get(this.url_server+'/get-colonias/'+id_colonias);
   }
+  public get_colonias_by_cp(cp:number):Observable<any>{
+    return this._http.get(this.url_server+'/get-colonias-by-cp/'+cp);
+  }
   public getToken():string {
     return this.cookieService.get('token');
   }
