@@ -22,6 +22,8 @@
   color: #001D7A;
   transition: all 0.3s ease-in-out;
   background: #1ed4e818;
+  margin-top: 0px;
+  height: 7vh;
 }
 
 .sam-form-field label {
@@ -69,7 +71,6 @@
 .sam-form-container {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Columnas automáticas */
-  gap: 10px; /* Espaciado entre elementos */
   width: 100%;
 }
 

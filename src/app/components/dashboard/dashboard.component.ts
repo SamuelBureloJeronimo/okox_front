@@ -77,9 +77,11 @@ export class DashboardComponent implements OnInit {
         { name: 'Registrar cliente', route: 'dashboard/capturist/register-client', icon: 'person_add' },
         { name: 'Ver clientes', route: 'dashboard/capturist/clients', icon: 'group' }
       ];
-    } else if (this.user.rol == 4){
+    } else if (this.user.rol == 3){
       this.fillerNav = [
         { name: 'Registrar usuario', route: 'dashboard/admin/register-user', icon: 'person_add' },
+        { name: 'Ver usuarios', route: 'dashboard/admin/view-users', icon: 'group' },
+        { name: 'Mantenimientos', route: 'dashboard/admin/maintenances', icon: 'engineering' },
         { name: 'Compañia', route: 'dashboard/admin/company', icon: 'store' }
       ];
     }

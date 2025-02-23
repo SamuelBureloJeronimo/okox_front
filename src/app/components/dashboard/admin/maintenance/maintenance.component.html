@@ -1,0 +1,80 @@
+<mat-card appearance="outlined">
+  <mat-card-content style="background-color: white; border-radius: 10px; box-shadow: 10px 10px 10px 0px rgb(107, 107, 107);">
+    <div class="row">
+      <div class="col text-center">
+        <h2 class="poppins-light">Registrar nuevo mantenimento</h2>
+      </div>
+    </div>
+
+    <form [formGroup]="this.mantenForm" (ngSubmit)="onSubmit()" class="usuario-form">
+
+  <div class="sam-form-container">
+
+    <div class="sam-form-field">
+      <select id="rol" formControlName="tipo" required>
+        <option value="" disabled>Tipo de mantenimiento</option>
+        <option value="0">Preventivo</option>
+        <option value="4">Correctivo</option>
+        <option value="4">Emergencia</option>
+      </select>
+      <mat-error *ngIf="mantenForm.get('tipo')?.touched && mantenForm.get('tipo')?.invalid">Seleccione el tipo de mantenimiento</mat-error>
+    </div>
+
+    <div class="sam-form-field" style="display: flex;">
+      <div style="width: 70%;">
+        <input type="text" placeholder=" " matInput formControlName="rfc_tec" required>
+        <label class="itim-regular"><mat-icon>fingerprint</mat-icon> RFC del técnico encargado</label>
+        <mat-error *ngIf="mantenForm.get('rfc_tec')?.touched && mantenForm.get('rfc_tec')?.invalid">El RFC del técnico es obligatorio</mat-error>
+      </div>
+      <button class="btn btn-primary" style="z-index: 1;" (click)="searchTecn()">
+        <mat-icon>search</mat-icon> Buscar</button>
+    </div>
+  </div>
+
+  <div class="sam-form-field out-items">
+    <input type="date" placeholder=" " matInput formControlName="fecha" required>
+    <label class="itim-regular">Fecha de suspensión</label>
+    <mat-error *ngIf="mantenForm.get('fecha')?.touched && mantenForm.get('fecha')?.invalid">La fecha de programación es obligatoria</mat-error>
+  </div>
+
+  <div class="sam-form-field out-items">
+    <input type="text" id="favorite-food" placeholder=" " matInput formControlName="descrip" required>
+    <label class="itim-regular">Detalles de la suspensión</label>
+    <mat-error *ngIf="mantenForm.get('descrip')?.touched && mantenForm.get('descrip')?.invalid">Escribe detalles de la suspensión</mat-error>
+  </div>
+
+  <div class="d-flex justify-content-center" [hidden]="!this.findTechn">
+    <mat-card class="outlined" style="overflow: hidden; width: fit-content;">
+      <mat-card-content>
+            <div class="row head_Title">
+              <h2 class="itim-regular">Técnico</h2>
+            </div>
+            <div class="row ">
+              <div class="col center_sam">
+                  <img [src]="user.imagen" style="height: 25vh; border-radius: 2vh;">
+              </div>
+              <div class="col" id="datos">
+                <div class="sam-form-field">
+                  <input type="text" placeholder=" " matInput required disabled>
+                  <label class="itim-regular"><mat-icon>fingerprint</mat-icon> {{user.rfc}}</label>
+                </div>
+                <div class="sam-form-field">
+                  <input type="text" placeholder=" " matInput required disabled>
+                  <label class="itim-regular"><mat-icon>person</mat-icon> {{nombreComp}}</label>
+                </div>
+                <div class="sam-form-field">
+                  <input type="text" placeholder=" " matInput required disabled>
+                  <label class="itim-regular"><mat-icon>fingerprint</mat-icon> {{user.rfc}}</label>
+                </div>
+              </div>
+            </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+
+
+    <button mat-raised-button color="primary" type="submit" [disabled]="this.mantenForm.invalid">Registrar</button>
+</form>
+
+</mat-card-content>
+</mat-card>

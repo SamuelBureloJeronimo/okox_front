@@ -11,4 +11,10 @@ export class AdminService extends GeneralService{
   public create_user(form:any):Observable<any> {
     return this._http.post(this.url_server+"/admin/create-user", form, { headers: this.headerToken() });
   }
+  public get_users():Observable<any>{
+    return this._http.get(this.url_server+"/admin/get-users", { headers: this.headerToken() });
+  }
+  public search_tec(rfc: string):Observable<any>{
+    return this._http.get(this.url_server+"/admin/search-tec/"+rfc, { headers: this.headerToken() });
+  }
 }

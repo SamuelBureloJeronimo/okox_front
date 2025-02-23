@@ -19,7 +19,7 @@ export const AdminGuard: CanActivateFn = async (route, state) => {
         Si es igual a cero el rol quiere decir que es un usuario normal,
         por lo que se le permite el acceso a su ruta.
       */
-      if(res.sub === "4") return true;
+      if(res.sub === "3") return true;
       //Si no, entonces lo retorna al home
       else{
         _router.navigateByUrl("/");

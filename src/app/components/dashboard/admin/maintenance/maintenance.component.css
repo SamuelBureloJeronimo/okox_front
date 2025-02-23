@@ -1,0 +1,48 @@
+.btn-primary {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 70%;
+  width: 15vh;
+  color: white;
+  border: 1px solid #ccc;
+  background-color: #e29e00;
+}
+
+.searchTecn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.sam-form-container {
+  grid-template-columns: repeat(auto-fit, minmax(350px, 2fr)); /* Columnas automáticas */
+}
+
+#datos input {
+  border: none;
+  background-color: rgba(76, 0, 83, 0.126);
+}
+#datos .sam-form-field {
+  margin: 0px;
+  width: 50vh;
+}
+.head_Title {
+  background-color: rgba(0, 46, 52, 0.89);
+  padding: 1%;
+  border-radius: 1vh;
+  margin-bottom: 2%;
+  h2 {
+    text-align: center;
+    color: white
+  }
+}
+.out-items {
+  margin: 0%;
+  margin-top: 2%;
+  margin-bottom: 1%;
+}
+.center_sam {
+  margin: 1%;
+  width: 100%;
+}

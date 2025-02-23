@@ -6,7 +6,7 @@ import Swal from 'sweetalert2'
 
 // - IMPORTS
 import { MatIconModule } from '@angular/material/icon';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -20,6 +20,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { MatButton } from '@angular/material/button';
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-register-user',
@@ -35,26 +36,12 @@ export class RegisterUserComponent implements OnInit {
   public municipios: MunicipioModel[] = [];
   public colonias: ColoniaModel[] = [];
 
-  id_col: number = 0;
-
   hEstado = true;
   hMunicipios = true;
   hColonia = true;
 
-
-
-  roles = [
-    {
-      "name": 'Capturista',
-      "value": 1
-    },
-    {
-      "name": 'Técnico',
-      "value": 2
-    }
-  ];
-
-  constructor(private fb: FormBuilder, private genServ: GeneralService, private adminServ: AdminService) {
+  constructor(private fb: FormBuilder, private genServ: GeneralService, private cookie: CookieService,
+              private adminServ: AdminService, private _router: Router) {
     this.empleadoForm = this.fb.group({
       rfc: [null, [Validators.maxLength(13), Validators.minLength(13), Validators.required]],
       nombre: [null, Validators.required],
@@ -85,7 +72,7 @@ export class RegisterUserComponent implements OnInit {
     form.set("apm", this.empleadoForm.value.apm);
     form.set("fech_nac", this.empleadoForm.value.fech_nac);
     form.set("sex", this.empleadoForm.value.sexo);
-    form.set("id_colonia", this.id_col.toString());
+    form.set("id_colonia", this.empleadoForm.value.colonia);
     form.set("rol", this.empleadoForm.value.rol);
     form.set("tel", this.empleadoForm.value.telefono);
     form.set("email", this.empleadoForm.value.correo);
@@ -93,6 +80,7 @@ export class RegisterUserComponent implements OnInit {
     let form_mail = new FormData();
 
     try {
+      console.log(form);
       let res = await lastValueFrom(this.adminServ.create_user(form));
       console.log(res);
       form_mail.set("username", res.user);
@@ -102,7 +90,10 @@ export class RegisterUserComponent implements OnInit {
       if (error.error.msg) {
         Swal.fire("Error", error.error.msg, "error");
       } else if (error.status == 401) {
-        Swal.fire("Sesión expirada", "Vuelve a iniciar sesión", "info");
+        Swal.fire(error.error.error, "Tu  sesión ha expirado, porfavor vuelve a iniciar sesión.", 'info').then(() =>{
+          this._router.navigate(['/']);
+          this.cookie.delete("token");
+        });
       } else {
         Swal.fire("Error", "Ocurrio un error inesperado", "error");
       }
@@ -116,16 +107,12 @@ export class RegisterUserComponent implements OnInit {
   }
 
   async selectPais() {
-    console.log("Entro");
 
     this.hEstado = true;
     this.hMunicipios = true;
     this.hColonia = true;
     const id_pais = this.empleadoForm.get('pais')?.value;
-    console.log('Pais seleccionado:', id_pais);
-
     this.estados = await lastValueFrom(this.genServ.get_estados(id_pais));
-    console.log(this.estados);
     this.hEstado = false;
   }
 
@@ -134,7 +121,6 @@ export class RegisterUserComponent implements OnInit {
     this.hColonia = true;
 
     const id_estado = this.empleadoForm.get('estado')?.value;
-    console.log('Estado seleccionado:', id_estado);
 
     this.municipios = await lastValueFrom(this.genServ.get_municipios(id_estado));
     this.hMunicipios = false;
@@ -145,10 +131,8 @@ export class RegisterUserComponent implements OnInit {
     this.hColonia = true;
 
     const id_mun = this.empleadoForm.get('municipio')?.value;
-    console.log('Municipio seleccionado:', id_mun);
 
     this.colonias = await lastValueFrom(this.genServ.get_colonias(id_mun));
-    console.log(this.colonias);
     this.hColonia = false;
   }
 }

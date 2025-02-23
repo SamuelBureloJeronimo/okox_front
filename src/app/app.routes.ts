@@ -14,6 +14,10 @@ import { CompanyComponent } from './components/dashboard/admin/company/company.c
 import { PerfilComponent } from './components/dashboard/admin/perfil/perfil.component';
 import { AdminGuard } from './guards/admin.guard';
 import { RegisterClientComponent } from './components/dashboard/capturist/register-client/register-client.component';
+import { ViewUsersComponent } from './components/dashboard/admin/view-users/view-users.component';
+import { MaintenanceComponent } from './components/dashboard/admin/maintenance/maintenance.component';
+import { RegisterDeviceComponent } from './components/dashboard/technician/register-device/register-device.component';
+import { IncidentsComponent } from './components/dashboard/technician/incidents/incidents.component';
 
 export const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -35,8 +39,18 @@ export const routes: Routes = [
         canActivate: [AdminGuard],
         children: [
           { path: 'register-user', component: RegisterUserComponent },
+          { path: 'view-users', component: ViewUsersComponent },
+          { path: 'maintenances', component: MaintenanceComponent },
           { path: 'company', component: CompanyComponent },
           { path: 'perfil', component: PerfilComponent }
+        ]
+      },
+      {
+        path: 'technician',
+        children: [
+          { path: 'register-device', component: RegisterDeviceComponent },
+          { path: 'view-devices', component: RegisterDeviceComponent },
+          { path: 'incidents', component: IncidentsComponent }
         ]
       },
       {
