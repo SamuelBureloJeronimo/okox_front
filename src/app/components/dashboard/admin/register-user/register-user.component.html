@@ -40,8 +40,8 @@
         <div class="sam-form-field">
           <select id="rol" formControlName="rol" required>
             <option value="" disabled>Selecciona un rol</option>
-            <option value="0">Capturista</option>
-            <option value="4">Administrador</option>
+            <option value="1">Capturista</option>
+            <option value="2">Técnico</option>
           </select>
           <mat-error *ngIf="empleadoForm.get('rol')?.touched && empleadoForm.get('rol')?.invalid">Seleccione un rol para el usuario</mat-error>
         </div>

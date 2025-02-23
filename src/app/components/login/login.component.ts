@@ -65,7 +65,10 @@ export class LoginComponent {
           case "1":
             nextRoute += "/capturist/register-client";
             break;
-          case "4":
+          case "2":
+              nextRoute += "/technician/register-device";
+              break;
+          case "3":
             nextRoute += "/admin/register-user";
             break;
           default:

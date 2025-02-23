@@ -30,9 +30,8 @@ export const ClientGuard: CanActivateFn = async () => {
   } catch (error: any) {
     //Imprime el error en la consola para poder monitorear cualquier falla y se sepa cual es
     console.log(error);
-    //Si el token a expirando lo retorna al home
-    if(error.error.error === "Token expirado")
-    {
+      //Imprime el error en la consola para poder monitorear cualquier falla y se sepa cual es
+      console.log(error);
       Swal.fire(error.error.error, "Tu  sesión ha expirado, porfavor vuelve a iniciar sesión.", 'info').then(() =>{
         _router.navigate(['/']).then(() => {
           cookie.delete("token");
@@ -40,10 +39,6 @@ export const ClientGuard: CanActivateFn = async () => {
           window.location.reload();  // Recarga la página después de la navegación
         });
       });
-    }else{
-      cookie.delete("token");
-      _router.navigateByUrl("/");
-    }
-    return false;
+      return false;
   }
 };
