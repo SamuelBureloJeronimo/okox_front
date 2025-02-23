@@ -33,6 +33,7 @@
   --G2: #eadbff;
   --G3: #f8f3ff;
   --G1T: #2424241a;
+  --AM1T: #e8ab1ea7;
 }
 a {
   text-decoration: none;
@@ -54,22 +55,5 @@ html {
 }
 *, *:before, *:after {
   box-sizing: inherit;
-}
-
-.sombra {
-  -webkit-box-shadow: 13px 13px 13px -8px rgba(0, 0, 0, 0.36);
-  -moz-box-shadow: 13px 13px 13px -8px rgba(0, 0, 0, 0.36);
-  box-shadow: 13px 13px 13px -8px rgba(0, 0, 0, 0.36);
-}
-
-.contenedor-in {
-  max-width: 120rem;
-  width: 95%;
-  margin: 0 auto;
-}
-
-.contenedor {
-  max-width: 120rem;
-  margin: 0 auto;
 }
 
