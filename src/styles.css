@@ -27,11 +27,13 @@
   --N: #000000;
   --A1: #00225A;
   --A2: #6188B9;
-  --A3: #B9D1EB;
+  --A3: #F2FEFE;
   --AM1: #E8AB1E;
   --G1: #242424;
   --G2: #eadbff;
   --G3: #f8f3ff;
+  --G1T: #2424241a;
+  --AM1T: #e8ab1ea7;
 }
 a {
   text-decoration: none;
@@ -46,3 +48,12 @@ html, body {
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+
+html {
+  box-sizing: border-box;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
