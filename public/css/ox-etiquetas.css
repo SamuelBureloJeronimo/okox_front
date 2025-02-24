@@ -14,9 +14,9 @@
 
 /*sombra*/
 .ox-sw {
-  -webkit-box-shadow: 13px 13px 13px -8px rgba(0, 0, 0, 0.36);
-  -moz-box-shadow: 13px 13px 13px -8px rgba(0, 0, 0, 0.36);
-  box-shadow: 13px 13px 13px -8px rgba(0, 0, 0, 0.36);
+  -webkit-box-shadow: 10px 13px 34px -21px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 10px 13px 34px -21px rgba(0, 0, 0, 0.75);
+  box-shadow: 10px 13px 34px -21px rgba(0, 0, 0, 0.75);
 }
 
 /*contenedores*/
