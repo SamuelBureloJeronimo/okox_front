@@ -7,11 +7,12 @@ import { CommonModule } from '@angular/common';
 import Swal from 'sweetalert2';
 import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
+import { MatButtonModule } from '@angular/material/button';
 
 
 @Component({
   selector: 'app-view-users',
-  imports: [MatTableModule, CommonModule],
+  imports: [MatTableModule, CommonModule, MatButtonModule],
   templateUrl: './view-users.component.html',
   styleUrl: './view-users.component.css'
 })
@@ -21,6 +22,10 @@ export class ViewUsersComponent implements OnInit {
   users: UsuarioModel[] = [];
 
   constructor(private adminServ: AdminService, private _router: Router, private cookie: CookieService){
+
+  }
+
+  verPerfil(id: number){
 
   }
 

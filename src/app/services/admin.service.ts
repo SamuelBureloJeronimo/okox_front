@@ -17,4 +17,7 @@ export class AdminService extends GeneralService{
   public search_tec(rfc: string):Observable<any>{
     return this._http.get(this.url_server+"/admin/search-tec/"+rfc, { headers: this.headerToken() });
   }
+  public register_mant(form: any):Observable<any>{
+    return this._http.post(this.url_server+"/admin/register-manten", form, { headers: this.headerToken() });
+  }
 }

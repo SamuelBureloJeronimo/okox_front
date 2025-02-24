@@ -17,6 +17,7 @@ import {LiveAnnouncer} from '@angular/cdk/a11y';
 import {COMMA, ENTER} from '@angular/cdk/keycodes';
 
 export interface Fruit {
+  id: number;
   name: string;
 }
 
@@ -42,6 +43,7 @@ export class MaintenanceComponent implements OnInit{
       tipo: ["", Validators.required],
       fecha: [null, [Validators.required, this.fechaMayorAHoy]],
       descrip: [null, Validators.required],
+      col_afec: ["",],
     });
       // Detectar cambios en el campo 'fecha'
     this.mantenForm.get('fecha')?.valueChanges.subscribe(value => {
@@ -56,7 +58,39 @@ export class MaintenanceComponent implements OnInit{
 
   }
 
-  onSubmit() {
+  async onSubmit() {
+    let val = "";
+    const valores = this.fruits(); // Obtiene todos los valores del signal
+    valores.forEach((element: any) => {
+      val += element.id+";";
+    })
+    this.mantenForm.value.col_afec = val;
+    const formData = new FormData();
+    formData.append("rfc_tec", this.mantenForm.value.rfc_tec);
+    formData.append("titulo", this.mantenForm.value.tipo);
+    formData.append("descripcion", this.mantenForm.value.descrip);
+    formData.append("fecha", this.mantenForm.value.fecha);
+    formData.append("col_afec", this.mantenForm.value.col_afec);
+    try {
+      let res = await lastValueFrom(this.admServ.register_mant(formData));
+      console.log(res);
+      Swal.fire("¡Registrado con éxito!", res, "success");
+      this.findTechn = false;
+      this.mantenForm.reset();
+      this.mantenForm.controls['tipo'].setValue("");
+    } catch (error: any) {
+      if (error.error.msg) {
+        Swal.fire("Error", error.error.msg, "error");
+      } else if (error.status == 401) {
+        Swal.fire(error.error.error, "Tu  sesión ha expirado, porfavor vuelve a iniciar sesión.", 'info').then(() =>{
+          this._router.navigate(['/']);
+          this.cookie.delete("token");
+        });
+      } else {
+        Swal.fire("Error", "Ocurrio un error inesperado", "error");
+      }
+      console.log(error);
+    }
   }
 
   async searchTecn() {
@@ -108,11 +142,14 @@ export class MaintenanceComponent implements OnInit{
     this.fruits.update(fruits => {
       const index = fruits.indexOf(fruit);
       if (index < 0) {
-        this.btnSendData = true;
         return fruits;
       }
 
       fruits.splice(index, 1);
+
+      if (fruits.length === 0)
+        this.btnSendData = true;
+
       this.announcer.announce(`Removed ${fruit.name}`);
 
       return [...fruits];
@@ -165,10 +202,9 @@ export class MaintenanceComponent implements OnInit{
       if (result.isConfirmed) {
         this.numero = Number(result.value); // Convierte el valor a número y lo guarda
         let res = await lastValueFrom(this.admServ.get_colonias_by_cp(this.numero));
-        console.log(res);
         let v = 0;
         res.forEach((element: any) => {
-          this.fruits.update(fruits => [...fruits, {name: element.nombre}]);
+          this.fruits.update(fruits => [...fruits, {id: element.id, name: element.nombre}]);
           v++;
         });
         if(v > 0)
