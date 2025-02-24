@@ -4,8 +4,6 @@ import { Component } from '@angular/core';
   selector: 'app-my-perfil',
   imports: [],
   templateUrl: './client-perfil.component.html',
-  styleUrl: './client-perfil.component.css'
+  styleUrl: './client-perfil.component.css',
 })
-export class MyPerfilComponent {
-
-}
+export class MyPerfilComponent {}

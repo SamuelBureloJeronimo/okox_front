@@ -18,17 +18,16 @@
   font-optical-sizing: auto;
   font-weight: 400;
   font-style: normal;
-  font-variation-settings:
-    "wdth" 100;
+  font-variation-settings: "wdth" 100;
 }
 
 :root {
-  --B: #FFFFFF;
+  --B: #ffffff;
   --N: #000000;
-  --A1: #00225A;
-  --A2: #6188B9;
-  --A3: #F2FEFE;
-  --AM1: #E8AB1E;
+  --A1: #00225a;
+  --A2: #6188b9;
+  --A3: #f2fefe;
+  --AM1: #e8ab1e;
   --G1: #242424;
   --G2: #eadbff;
   --G3: #f8f3ff;
@@ -39,18 +38,14 @@ a {
   text-decoration: none;
 }
 
-html, body {
+html,
+body {
   margin: 0;
   padding: 0;
   font-size: 14px; /* Ajusta según tu preferencia */
 }
 
-
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
-
-
-html {
-  box-sizing: border-box;
+html,
+body {
+  height: 100%;
 }
-

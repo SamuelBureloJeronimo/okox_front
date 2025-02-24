@@ -1,4 +1,35 @@
-.bg__perfil{
-    background-color: var(--B);
-    border-radius: 1rem;
+.bg__perfil {
+  background-color: var(--N);
+  border-radius: 1rem;
+}
+p {
+  margin: 0;
+}
+.perfil {
+  display: flex;
+  background-color: violet;
+}
+
+.perfil__usuario {
+  border-right: solid 0.2rem var(--G1T);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.5rem;
+  background-color: coral;
+}
+
+.perfil__info {
+  display: flex;
+  gap: 1rem;
+  padding: 0.5rem;
+  justify-content: center;
+  align-items: flex-start;
+  background-color: aqua;
+}
+
+.campo {
+  border-bottom: solid 0.2rem var(--G1T);
 }
