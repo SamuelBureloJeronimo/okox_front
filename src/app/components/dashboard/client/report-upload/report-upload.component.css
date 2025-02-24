@@ -1,0 +1,158 @@
+.upload-container {
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  gap: 12px;
+}
+
+button {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 15px;
+}
+
+.preview {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+  width: 100%;
+  height: 30vh;
+  border-radius: 8px;
+  padding: 10%;
+  padding-top: 0;
+  padding-bottom: 0;
+  overflow: hidden;
+}
+
+.preview img {
+  height: 100%;
+  border-radius: 2vh;
+}
+
+.btn-primary {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 70%;
+  width: 15vh;
+  color: white;
+  border: 1px solid #ccc;
+  background-color: #e29e00;
+}
+
+.searchTecn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+
+
+.report-history {
+  margin-top: 10px;
+  padding: 10px;
+}
+
+.report-item {
+  padding: 16px;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-bottom: 16px;
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.report-item:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.report-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.report-icon {
+  font-size: 28px;
+  color: #3f51b5;
+  margin-right: 12px;
+}
+
+.report-info {
+  flex-grow: 1;
+}
+
+.report-title {
+  font-size: 16px;
+  font-weight: bold;
+  color: #333;
+}
+
+.report-date {
+  font-size: 12px;
+  color: #888;
+  margin-top: 4px;
+}
+
+.report-status {
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  font-weight: bold;
+  padding: 4px 10px;
+  border-radius: 20px;
+  text-transform: uppercase;
+}
+
+.atendido {
+  background: #e8f5e9;
+  color: #388e3c;
+}
+
+.pendiente {
+  background: #ffebee;
+  color: #d32f2f;
+}
+
+.report-body {
+  margin-top: 10px;
+}
+
+.report-message {
+  font-size: 14px;
+  color: #444;
+  margin: 0;
+  padding: 8px;
+  border-left: 4px solid #3f51b5;
+  background: #f0f4ff;
+  border-radius: 4px;
+}
+
+.report-photo {
+  margin-top: 12px;
+  display: flex;
+  justify-content: center;
+}
+
+.report-photo img {
+  width: 100%;
+  max-width: 250px;
+  height: auto;
+  border-radius: 8px;
+  object-fit: cover;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+mat-divider {
+  margin: 16px 0;
+  background-color: #ddd;
+}
+
+.history-icon {
+  color: #3f51b5;
+  margin-right: 5px;
+}

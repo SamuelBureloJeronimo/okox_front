@@ -1,1 +1,53 @@
-<p>company works!</p>
+<mat-card class="company-card">
+  <mat-card-header class="company-header">
+    <div class="company-logo-container">
+      <img mat-card-avatar [src]="company.logo" alt="Logo de la empresa">
+    </div>
+    <div class="company-info">
+      <mat-card-title class="company-name">{{ company.nombre }}</mat-card-title>
+      <mat-card-subtitle class="company-tagline">{{ company.descripcion }}</mat-card-subtitle>
+    </div>
+  </mat-card-header>
+
+  <mat-card-content>
+    <mat-grid-list cols="2" rowHeight="150px" gutterSize="16px">
+      <mat-grid-tile class="grid-item">
+        <mat-icon class="icon">phone</mat-icon>
+        <div>
+          <h4>Teléfono</h4>
+          <p>{{ company.telefono }}</p>
+        </div>
+      </mat-grid-tile>
+
+      <mat-grid-tile class="grid-item">
+        <mat-icon class="icon" style="margin-left: 10%;">location_on</mat-icon>
+        <div >
+          <h4>Ubicación</h4>
+          <p> as as as as a sa sasas as ka k kasnaksnka sjao soas hoajo oa osuos jo{{ company.id_colonia }}</p>
+        </div>
+      </mat-grid-tile>
+
+      <mat-grid-tile class="grid-item">
+        <mat-icon class="icon">facebook</mat-icon>
+        <div>
+          <h4>Facebook</h4>
+          <a *ngIf="company.facebook" [href]="company.facebook" target="_blank">Visitar</a>
+        </div>
+      </mat-grid-tile>
+
+      <mat-grid-tile class="grid-item">
+        <mat-icon class="icon">business</mat-icon>
+        <div>
+          <h4>LinkedIn</h4>
+          <a *ngIf="company.linkedIn" [href]="company.linkedIn" target="_blank">Visitar</a>
+        </div>
+      </mat-grid-tile>
+    </mat-grid-list>
+  </mat-card-content>
+
+  <mat-card-actions>
+    <a *ngIf="company.link_x" mat-raised-button color="primary" [href]="company.link_x" target="_blank">
+      Visitanos en X ->
+    </a>
+  </mat-card-actions>
+</mat-card>

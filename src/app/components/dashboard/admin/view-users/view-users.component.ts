@@ -8,11 +8,12 @@ import Swal from 'sweetalert2';
 import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
 import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
 
 
 @Component({
   selector: 'app-view-users',
-  imports: [MatTableModule, CommonModule, MatButtonModule],
+  imports: [MatTableModule, CommonModule, MatButtonModule, MatIconModule],
   templateUrl: './view-users.component.html',
   styleUrl: './view-users.component.css'
 })

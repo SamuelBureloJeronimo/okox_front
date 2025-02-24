@@ -1,1 +1,89 @@
-<p>register-client works!</p>
+<mat-card appearance="outlined">
+  <mat-card-content style="background-color: white; border-radius: 10px; box-shadow: 10px 10px 10px 0px rgb(107, 107, 107);">
+
+    <div class="row">
+      <div class="col text-center">
+        <h3 class="itim-regular">Nuevo empleado</h3>
+      </div>
+    </div>
+
+    <form [formGroup]="empleadoForm" (ngSubmit)="onSubmit()" class="usuario-form">
+
+      <div class="sam-form-container">
+
+        <div class="sam-form-field">
+          <input type="text" id="favorite-food" placeholder=" " matInput formControlName="rfc" required>
+          <label class="itim-regular"><mat-icon>fingerprint</mat-icon> RFC con homoclave</label>
+          <mat-error *ngIf="empleadoForm.get('rfc')?.touched && empleadoForm.get('rfc')?.invalid">El RFC es obligatorio y debe tener 13 caracteres</mat-error>
+        </div>
+
+        <div class="sam-form-field">
+          <input type="text" id="favorite-food" placeholder=" " matInput formControlName="nombre" required>
+          <label class="itim-regular">Nombre(s)</label>
+          <mat-error *ngIf="empleadoForm.get('nombre')?.touched && empleadoForm.get('nombre')?.invalid">El nombre es obligatorio</mat-error>
+        </div>
+        <div class="sam-form-field">
+          <input type="text" id="favorite-food" placeholder=" " matInput formControlName="app" required>
+          <label class="itim-regular">Apellido paterno</label>
+          <mat-error *ngIf="empleadoForm.get('app')?.touched && empleadoForm.get('app')?.invalid">El apellido paterno es obligatorio</mat-error>
+        </div>
+        <div class="sam-form-field">
+          <input type="text" id="favorite-food" placeholder=" " matInput formControlName="apm" required>
+          <label class="itim-regular">Apellido materno</label>
+          <mat-error *ngIf="empleadoForm.get('apm')?.touched && empleadoForm.get('apm')?.invalid">El apellido materno es obligatorio</mat-error>
+        </div>
+        <div class="sam-form-field">
+          <input type="date" id="favorite-food" placeholder=" " matInput formControlName="fech_nac" required>
+          <label class="itim-regular">Fecha de nacimiento</label>
+          <mat-error *ngIf="empleadoForm.get('fech_nac')?.touched && empleadoForm.get('fech_nac')?.invalid">La fecha de nacimiento es obligatorio</mat-error>
+        </div>
+        <div class="sam-form-field">
+          <select id="sexo" formControlName="sexo" required>
+            <option value="" disabled>Género</option>
+            <option value="M">Masculino</option>
+            <option value="F">Femenino</option>
+          </select>
+          <mat-error *ngIf="empleadoForm.get('sexo')?.touched && empleadoForm.get('sexo')?.invalid">Seleccione un rol para el usuario</mat-error>
+        </div>
+        <div class="sam-form-field">
+          <input type="number" id="favorite-food" placeholder=" " matInput formControlName="telefono" required>
+          <label class="itim-regular"><mat-icon>call</mat-icon>Teléfono</label>
+          <mat-error *ngIf="empleadoForm.get('telefono')?.touched && empleadoForm.get('telefono')?.invalid">Ingrese un teléfono válido</mat-error>
+        </div>
+        <div class="sam-form-field">
+          <input type="email" id="favorite-food" placeholder=" " matInput formControlName="correo" required>
+          <label class="itim-regular"><mat-icon>mail</mat-icon> Correo eléctronico</label>
+          <mat-error *ngIf="empleadoForm.get('correo')?.touched && empleadoForm.get('correo')?.invalid">Ingrese un correo válido</mat-error>
+        </div>
+        <div class="sam-form-field">
+          <select id="paises" formControlName="pais" required (change)="selectPais()">
+            <option value="" disabled selected>Selecciona el pais</option>
+            <option *ngFor="let pais of this.paises" [value]="[pais.id]">{{pais.nombre}}</option>
+          </select>
+        </div>
+        <div class="sam-form-field" [hidden]="hEstado">
+          <select id="estados" formControlName="estado" required (change)="changeEstado()">
+            <option value="" disabled selected>Selecciona el estado</option>
+            <option *ngFor="let estado of this.estados" [value]="[estado.id]">{{estado.nombre}}</option>
+          </select>
+        </div>
+        <div class="sam-form-field" [hidden]="hMunicipios">
+          <select id="municipios" formControlName="municipio" required (change)="changeMunicipio()">
+            <option value="" disabled selected>Selecciona el municipio</option>
+            <option *ngFor="let municipio of this.municipios" [value]="[municipio.id]">{{municipio.nombre}}</option>
+          </select>
+        </div>
+        <div class="sam-form-field" [hidden]="hColonia">
+          <select id="colonias" formControlName="colonia" required>
+            <option value="" disabled selected>Selecciona la colonia</option>
+            <option *ngFor="let colonia of this.colonias" [value]="[colonia.id]">{{colonia.nombre}}</option>
+          </select>
+        </div>
+      </div>
+
+      <button mat-raised-button color="primary" type="submit" [disabled]="empleadoForm.invalid">Registrar</button>
+    </form>
+
+  </mat-card-content>
+
+  </mat-card>

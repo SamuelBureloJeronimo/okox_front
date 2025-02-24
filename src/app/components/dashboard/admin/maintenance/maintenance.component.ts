@@ -99,7 +99,7 @@ export class MaintenanceComponent implements OnInit{
       this.nombreComp = res.nombre;
       this.user = res;
       console.log(this.user);
-      this.user.imagen = this.admServ.url_server+"/image/clients/"+this.user.imagen
+      this.user.imagen = this.admServ.url_server+this.user.imagen
       this.findTechn = true;
     } catch (error: any) {
       if (error.status == 400) {

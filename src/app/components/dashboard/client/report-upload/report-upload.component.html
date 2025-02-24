@@ -1,1 +1,119 @@
-<p>report-upload works!</p>
+<mat-card appearance="outlined">
+  <mat-card-content>
+
+    <mat-accordion>
+
+      <mat-expansion-panel expanded="0">
+        <mat-expansion-panel-header>
+          <mat-panel-title> Generar un nuevo reporte </mat-panel-title>
+        </mat-expansion-panel-header>
+        <!-- CUERPO QUE SE EXPANDE -->
+        <form [formGroup]="reportForm" (ngSubmit)="enviarReporte(); reportForm.valid?reportForm.reset(): null;">
+
+          <div class="sam-form-container">
+            <div class="sam-form-field">
+              <label class="itim-regular" style="top: -1vh; color: #21386B;">
+                <mat-icon>bug_report</mat-icon>Selecciona la razón del reporte:</label>
+              <select id="rol" formControlName="razon" required (change)="selectRazon()">
+                <option value="Fuga de agua (tuberia rota)">Fuga de agua (tuberia rota)</option>
+                <option value="Baja presión">Baja presión</option>
+                <option value="Muchas interrupciones">Muchas interrupciones</option>
+                <option value="Agua de muy mala calidad">Agua de muy mala calidad</option>
+                <option value="El dispositivo no funciona">El dispositivo no funciona</option>
+                <option value="Obstrucción en las tuberías">Obstrucción en las tuberías</option>
+                <option value="7">Otro...</option>
+              </select>
+              <mat-error *ngIf="reportForm.get('razon')?.touched && reportForm.get('razon')?.invalid">Seleccione la razón de su reporte</mat-error>
+            </div>
+            <div class="sam-form-field" style="display: flex;" aria-disabled="true">
+              <div style="width: 70%;">
+                <input type="text" placeholder=" " matInput formControlName="cp" required>
+                <label class="itim-regular"><mat-icon>pin_drop</mat-icon> Código postal</label>
+                <mat-error *ngIf="reportForm.get('cp')?.touched && reportForm.get('cp')?.invalid">El RFC del técnico es obligatorio</mat-error>
+              </div>
+              <button class="btn btn-primary" type="button" style="z-index: 1;" (click)="getColonias_by_CP()">
+                <mat-icon>search</mat-icon> Buscar</button>
+            </div>
+          </div>
+
+          <div class="sam-form-container" style="margin-top: -2%;" [hidden]="hColonia">
+            <div class="sam-form-field" [hidden]="hid">
+              <input type="text" id="favorite-food" placeholder=" " matInput formControlName="razon2" required>
+              <label class="itim-regular">Escribe la razón de tu reporte...</label>
+            </div>
+            <div class="sam-form-field">
+              <select id="colonias" formControlName="id_col" required>
+                <option value="" disabled selected>Selecciona la colonia</option>
+                <option *ngFor="let colonia of this.colonias" [value]="[colonia.id]">{{colonia.nombre}}</option>
+              </select>
+            </div>
+          </div>
+
+
+
+
+
+
+          <div class="upload-container">
+            <input #fileInput type="file" (change)="onFileSelected($event)" accept="image/*" hidden>
+
+            <div class="preview" *ngIf="imageUrl">
+              <img [src]="imageUrl" alt="Vista previa">
+            </div>
+
+            <button type="button" mat-raised-button color="primary" (click)="fileInput.click()">
+              <mat-icon>cloud_upload</mat-icon> Subir Imagen
+            </button>
+          </div>
+
+          <div class="text-center">
+            <button style="width: 100%; padding: 2%;" type="submit" class="btn btn-primary" [disabled]="isSendReport">Enviar reporte</button>
+          </div>
+
+        </form>
+      </mat-expansion-panel>
+
+<!-- Historial de reportes -->
+<mat-expansion-panel>
+  <mat-expansion-panel-header>
+    <mat-panel-title>
+      <mat-icon class="history-icon">history</mat-icon> Historial de reportes
+    </mat-panel-title>
+  </mat-expansion-panel-header>
+
+  <!-- Contenedor del historial -->
+  <div class="report-history">
+    <div *ngFor="let reporte of reportes" class="report-item">
+
+      <!-- Encabezado del reporte -->
+      <div class="report-header">
+        <mat-icon class="report-icon">bug_report</mat-icon>
+        <div class="report-info">
+          <span class="report-title">{{ reporte.razon }}</span>
+          <span class="report-date">{{ reporte.fecha_subida }}</span>
+        </div>
+        <span class="report-status" [ngClass]="{'atendido': reporte.atendido, 'pendiente': !reporte.atendido}">
+          <mat-icon>{{ reporte.atendido ? 'check_circle' : 'error' }}</mat-icon>
+          {{ reporte.atendido ? 'Atendido' : 'Pendiente' }}
+        </span>
+      </div>
+
+      <!-- Contenido del reporte -->
+      <div class="report-body">
+        <p class="report-message">{{ reporte.razon }}</p>
+        <div *ngIf="reporte.foto" class="report-photo">
+          <img [src]="this.rutaServ+reporte.foto" alt="Imagen del reporte" class="report-image">
+        </div>
+      </div>
+
+      <mat-divider></mat-divider>
+    </div>
+  </div>
+
+</mat-expansion-panel>
+
+
+    </mat-accordion>
+
+  </mat-card-content>
+  </mat-card>

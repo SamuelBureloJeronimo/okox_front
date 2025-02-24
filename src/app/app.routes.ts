@@ -31,7 +31,7 @@ export const routes: Routes = [
           { path: 'payment-upload', component: PaymentUploadComponent },
           { path: 'payments-history', component: PaymentsHistoryComponent },
           { path: 'report-upload', component: ReportUploadComponent },
-          { path: 'company-info', component: CompanyInfoComponent },
+          { path: 'company-info', component: CompanyComponent },
           { path: 'my-perfil', component: MyPerfilComponent },
         ]
       },
@@ -42,7 +42,7 @@ export const routes: Routes = [
           { path: 'view-users', component: ViewUsersComponent, canActivate: [AdminGuard] },
           { path: 'maintenances', component: MaintenanceComponent, canActivate: [AdminGuard] },
           { path: 'company', component: CompanyComponent, canActivate: [AdminGuard] },
-          { path: 'perfil', component: PerfilComponent, canActivate: [AdminGuard] }
+          { path: 'perfil', component: MyPerfilComponent, canActivate: [AdminGuard] }
         ]
       },
       {

@@ -1,0 +1,97 @@
+/* Contenedor de la tabla */
+.table-container {
+  width: 100%;
+  padding: 15px;
+  background: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  overflow-x: auto;
+}
+
+/* Tabla personalizada */
+.custom-table {
+  width: 100%;
+  border-collapse: collapse;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+/* Encabezados de la tabla */
+.mat-header-cell {
+  font-weight: bold;
+  background: linear-gradient(135deg, #3f51b5, #1e88e5);
+  color: white;
+  text-align: center;
+  padding: 16px;
+  text-transform: uppercase;
+  font-size: 14px;
+  letter-spacing: 1px;
+}
+
+/* Celdas de la tabla */
+.mat-cell {
+  text-align: center;
+  padding: 14px;
+  font-size: 14px;
+  color: #333;
+  transition: background 0.3s ease;
+}
+
+/* Efecto hover en las filas */
+tr:hover {
+  background: rgba(63, 81, 181, 0.1);
+}
+
+/* Filas alternadas */
+tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+/* Contenedor de los chips de roles */
+.role-chip-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+/* Chips de roles ocupando toda la celda */
+.role-chip {
+  display: inline-block;
+  width: 100%;
+  max-width: 200px;
+  padding: 8px 12px;
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: bold;
+  text-transform: uppercase;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+/* Colores para los diferentes roles */
+.role-1 { background-color: #ffeb3b; color: #000; }  /* Capturista - Amarillo */
+.role-2 { background-color: #2196f3; color: #fff; }  /* Técnico - Azul */
+.role-3 { background-color: #f44336; color: #fff; }  /* Administrador - Rojo */
+
+.role-chip:hover {
+  transform: scale(1.1);
+}
+
+/* Botón de Ver Perfil con animación */
+.view-button {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.view-button mat-icon {
+  font-size: 22px;
+  color: #3f51b5;
+}
+
+.headerPerson {
+  font-weight:bold;
+  font-size: 16px;
+}

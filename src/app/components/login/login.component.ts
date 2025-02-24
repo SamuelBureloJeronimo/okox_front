@@ -33,8 +33,8 @@ export class LoginComponent {
    * @param _router -> Instancia del servicio de enrutamiento Angular para redirigir al usuario después del inicio de sesión exitoso.
    */
   constructor(private genServ: GeneralService, private _router: Router, private cookieServ: CookieService) {
-    this.email = "samuelbj@gmail.com";
-    this.password = "1415";
+    this.email = "samuelbj0608@gmail.com";
+    this.password = "pL~Gp'$";
   }
 
   //Maneja la lógica cuando el usuario envía el formulario de inicio de sesión.

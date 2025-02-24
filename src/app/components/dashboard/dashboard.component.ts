@@ -51,9 +51,8 @@ export class DashboardComponent implements OnInit {
 
   async ngOnInit() {
     let res = await lastValueFrom(this.genServ.init_dashboard());
-    this.company.logo = this.genServ.url_server + "/image/companies/" + res.logo;
-
-    this.user.imagen = this.genServ.url_server + "/image/clients/" + res.img_user;
+    this.company.logo = this.genServ.url_server+res.logo;
+    this.user.imagen = this.genServ.url_server+res.img_user;
     this.user.username = res.username;
     this.user.email = res.email;
 
@@ -148,7 +147,7 @@ export class DashboardComponent implements OnInit {
       this._router.navigate(["/dashboard/client/my-perfil"]);
     } else if(this.user.rol == 1){
       //this._router.navigate(["/dashboard/capturist/my-perfil"]);
-    } else if(this.user.rol == 4){
+    } else if(this.user.rol == 3){
       this._router.navigate(["/dashboard/admin/perfil"]);
     }
   }

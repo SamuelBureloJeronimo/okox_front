@@ -1,0 +1,114 @@
+.company-header {
+  display: flex;
+  align-items: center;
+  padding: 16px;
+  background-color: #ffffff;
+  border-radius: 12px 12px 0 0;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.company-logo-container {
+  margin-right: 16px;
+}
+
+.company-logo-container img {
+  width: 60px;
+  height: 60px;
+  object-fit: contain;
+  border-radius: 50%;
+  border: 2px solid #3f51b5;
+  background-color: #fff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.company-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.company-name {
+  font-size: 22px;
+  font-weight: bold;
+  color: #333;
+  margin: 0;
+  line-height: 1.2;
+}
+
+.company-tagline {
+  font-size: 14px;
+  color: #777;
+  font-style: italic;
+  margin-top: 4px;
+}
+
+mat-card-header {
+  transition: background-color 0.3s ease;
+}
+
+mat-card-header:hover {
+  background-color: #e0e0e0;
+}
+
+mat-card-content {
+  padding: 16px;
+}
+
+
+.grid-item {
+  display: flex;
+  align-items: center;
+  border-radius: 8px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease;
+  background-color: #1ed4e818;
+}
+
+.grid-item div {
+  padding: 5%;
+}
+
+.grid-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.icon {
+  font-size: 30px;
+  color: #3f51b5;
+  overflow: visible;
+}
+
+.grid-item div {
+  display: flex;
+  flex-direction: column;
+}
+
+.grid-item h4 {
+  font-size: 16px;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 4px;
+}
+
+.grid-item p {
+  font-size: 14px;
+  color: #666;
+}
+
+a {
+  color: #3f51b5;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+mat-card-actions {
+  padding: 16px;
+  display: flex;
+  justify-content: center;
+  background-color: white;
+  border-radius: 0vh 0vh 2vh 2vh;
+}

@@ -14,7 +14,6 @@ export const ClientGuard: CanActivateFn = async () => {
   try {
     //Valida en el backend que el token sea válido
     let res = await lastValueFrom(auth.isAuth());
-    console.log(res);
     /*
       Si es igual a cero el rol quiere decir que es un usuario normal,
       por lo que se le permite el acceso a su ruta.
@@ -28,10 +27,6 @@ export const ClientGuard: CanActivateFn = async () => {
 
     //Control de excepciones
   } catch (error: any) {
-    //Imprime el error en la consola para poder monitorear cualquier falla y se sepa cual es
-    console.log(error);
-      //Imprime el error en la consola para poder monitorear cualquier falla y se sepa cual es
-      console.log(error);
       Swal.fire(error.error.error, "Tu  sesión ha expirado, porfavor vuelve a iniciar sesión.", 'info').then(() =>{
         _router.navigate(['/']).then(() => {
           cookie.delete("token");

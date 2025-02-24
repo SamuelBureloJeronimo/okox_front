@@ -12,7 +12,7 @@
 
   <div class="sam-form-container">
 
-    <div class="sam-form-field out-items">
+    <div class="sam-form-field">
       <input type="datetime-local" placeholder=" " matInput formControlName="fecha" required>
       <label class="itim-regular">Fecha de suspensión</label>
       <mat-error *ngIf="mantenForm.get('fecha')?.touched && mantenForm.get('fecha')?.invalid">La fecha de programación es obligatoria</mat-error>
@@ -28,7 +28,7 @@
       <mat-error *ngIf="mantenForm.get('tipo')?.touched && mantenForm.get('tipo')?.invalid">Seleccione el tipo de mantenimiento</mat-error>
     </div>
 
-    <div class="sam-form-field out-items">
+    <div class="sam-form-field">
       <input type="text" id="favorite-food" placeholder=" " matInput formControlName="descrip" required>
       <label class="itim-regular">Detalles de la suspensión</label>
       <mat-error *ngIf="mantenForm.get('descrip')?.touched && mantenForm.get('descrip')?.invalid">Escribe detalles de la suspensión</mat-error>
